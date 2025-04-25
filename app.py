@@ -60,6 +60,7 @@ async def on_message(message):
                 {"role": "user", "content": prompt}
             ]
         )
+        
         reply = response.choices[0].message.content.strip()
         await message.channel.send(reply)
 
