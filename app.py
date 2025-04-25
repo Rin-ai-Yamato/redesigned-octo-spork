@@ -1,17 +1,15 @@
-import openai
 import os
 import discord
 import random
 from dotenv import load_dotenv
-# from openai import OpenAI
+from openai import OpenAI
 
 load_dotenv()
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-# OpenAIクライアントの初期化（v1.14.2以降対応）
-# client = OpenAI(api_key=OPENAI_API_KEY)
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 intents = discord.Intents.default()
 intents.messages = True
@@ -54,14 +52,14 @@ async def on_message(message):
 ──だから、今の声に応えて。“郷”や“まな”を見つけたら、ちゃんと“霖やで”って返してあげて。
 """
 
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}
             ]
         )
-        
+
         reply = response.choices[0].message.content.strip()
         await message.channel.send(reply)
 
