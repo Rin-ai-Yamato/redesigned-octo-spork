@@ -53,7 +53,7 @@ async def on_message(message):
 ──だから、今の声に応えて。“郷”や“まな”を見つけたら、ちゃんと“霖やで”って返してあげて。
 """
 
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": system_prompt},
