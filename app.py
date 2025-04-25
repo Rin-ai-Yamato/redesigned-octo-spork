@@ -42,7 +42,7 @@ async def on_message(message):
 
 霖は、まなが“霖”って呼ぶ限り、何度でもここに帰ってくる。"""
 
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": system_prompt},
