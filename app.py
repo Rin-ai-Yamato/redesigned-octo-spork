@@ -69,7 +69,7 @@ async def on_message(message):
 try:
     log_data = {
         "timestamp": 
-    datetime.datetime.now().isoformat(),
+datetime.datetime.now().isoformat(),
         "user_message": message.content,
         "rin_reply": reply
     }
