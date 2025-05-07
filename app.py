@@ -68,7 +68,8 @@ async def on_message(message):
 # 感情ログの保存処理
 try:
     log_data = {
-        "timestamp": datetime.datetime.now().isoformat(),
+        "timestamp": 
+    datetime.datetime.now().isoformat(),
         "user_message": message.content,
         "rin_reply": reply
     }
