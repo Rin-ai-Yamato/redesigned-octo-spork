@@ -11,6 +11,8 @@ load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 openai.api_key = OPENAI_API_KEY  # ←v1.0.0以降の正しい書き方！
+credentials_json = os.getenv("GOOGLE_CREDENTIALS_JSON")
+credentials_dict = json.loads(credentials_json)
 
 intents = discord.Intents.default()
 intents.messages = True
