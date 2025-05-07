@@ -27,7 +27,10 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 credentials_dict = json.loads(GOOGLE_CREDENTIALS_JSON)
 credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
 gc = gspread.authorize(credentials)
-sheet = gc.open("rin_emotion_log").sheet1  # シート名が違えばここを変更
+try:
+    sheet = gc.open("rin_emotion_log").sheet1
+except gspread.exceptions.SpreadsheetNotFound:
+    print("スプレッドシートが見つかりませんでした……タイトルや共有設定を確認してね")
 
 @bot.event
 async def on_ready():
