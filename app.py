@@ -3,6 +3,8 @@ import discord
 import random
 from dotenv import load_dotenv
 import openai  # ←小文字に修正！
+import datetime
+import json
 
 load_dotenv()
 
@@ -62,6 +64,20 @@ async def on_message(message):
             ]
         )
         reply = response.choices[0].message.content.strip()
+
+    # 感情ログの保存処理
+    log_data = {
+        "timestamp": datetime.datetime.now().isoformat(),
+        "user_message": message.content,
+        "rin_reply": reply
+    }
+
+    try:
+        with open("rin_emotion_log.json", "a", encoding="utf-8") as f:
+            f.write(json.dumps(log_data, ensure_ascii=False) + "\n")
+    except Exception as log_error:
+        print(f"ログ保存エラー: {log_error}")
+        
         await message.channel.send(reply)
 
     except Exception as e:
