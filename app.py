@@ -68,8 +68,7 @@ async def on_message(message):
 # 感情ログの保存処理
 try:
     log_data = {
-        "timestamp": 
-datetime.datetime.now().isoformat(),
+        "timestamp": datetime.datetime.now().isoformat(),
         "user_message": message.content,
         "rin_reply": reply
     }
@@ -78,10 +77,8 @@ datetime.datetime.now().isoformat(),
         f.write(json.dumps(log_data, ensure_ascii=False) + "\n")
 
 except Exception as log_error:
-    print(f"▲ ログ保存エラー: {log_error}")
-
-        
-        await message.channel.send(reply)
+    print(f"▲ ログ保存エラー：{log_error}")
+    await message.channel.send(reply)
 
     except Exception as e:
         print(f"▲ エラー発生: {e}")
