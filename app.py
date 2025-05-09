@@ -98,7 +98,7 @@ try:
     await message.channel.send(reply)
 
         # 感情ログ保存
-        timestamp = datetime.datetime.now().isoformat()
+    timestamp = datetime.datetime.now().isoformat()
         sheet.append_row([timestamp, message.content, reply])
 
     except Exception as e:
