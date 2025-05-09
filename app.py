@@ -99,7 +99,7 @@ try:
 
         # 感情ログ保存
     timestamp = datetime.datetime.now().isoformat()
-        sheet.append_row([timestamp, message.content, reply])
+    sheet.append_row([timestamp, message.content, reply])
 
     except Exception as e:
         print(f"▲ エラー発生：{e}")
