@@ -94,8 +94,8 @@ try:
             ]
         )
 
-        reply = response.choices[0].message.content.strip()
-        await message.channel.send(reply)
+    reply = response.choices[0].message.content.strip()
+    await message.channel.send(reply)
 
         # 感情ログ保存
         timestamp = datetime.datetime.now().isoformat()
