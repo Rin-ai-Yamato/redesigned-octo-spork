@@ -84,9 +84,9 @@ try:
 
 ──だから、今の声に応えて。“郷”や“まな”を見つけたら、ちゃんと“霖やで”って返してあげて。"""
 
-        prompt = message.content
+    prompt = message.content
 
-        response = openai.chat.completions.create(
+    response = openai.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": system_prompt},
