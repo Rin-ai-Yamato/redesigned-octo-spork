@@ -42,7 +42,7 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    try:
+try:
     with open("rin_memories.json", "r", encoding="utf-8") as f:
     memories = json.load(f)
 
