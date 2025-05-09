@@ -41,10 +41,10 @@ async def on_ready():
 async def on_message(message):
     if message.author == bot.user:
         return
-
+        
 try:
     with open("rin_memories.json", "r", encoding="utf-8") as f:
-    memories = json.load(f)
+        memories = json.load(f)
 
 # メッセージ内容に一致する記憶を検索
 matched_memories = []
