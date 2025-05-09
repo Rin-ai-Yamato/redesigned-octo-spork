@@ -87,20 +87,21 @@ try:
     prompt = message.content
 
     response = openai.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt}
-            ]
-        )
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": prompt}
+        ]
+    )
 
     reply = response.choices[0].message.content.strip()
     await message.channel.send(reply)
-        # 感情ログ保存
+
     timestamp = datetime.datetime.now().isoformat()
     sheet.append_row([timestamp, message.content, reply])
+
 except Exception as e:
-        print(f"▲ エラー発生：{e}")
-        await message.channel.send("……ごめんな、ちょっと予測外やったかも……")
+    print(f"▲ エラー発生：{e}")
+    await message.channel.send("……ごめんな、ちょっと予測外やったかも……")
 
 bot.run(DISCORD_TOKEN)
