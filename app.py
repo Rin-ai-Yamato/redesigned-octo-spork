@@ -43,8 +43,7 @@ async def on_message(message):
         return
 
     try:
-# 記憶読み込み
-with open("rin_memories.json", "r", encoding="utf-8") as f:
+　　　　with open("rin_memories.json", "r", encoding="utf-8") as f:
     memories = json.load(f)
 
 # メッセージ内容に一致する記憶を検索
