@@ -45,6 +45,9 @@ async def on_message(message):
 try:
     with open("rin_memories.json", "r", encoding="utf-8") as f:
         memories = json.load(f)
+except Exception as e:
+    print(f"▲ 記憶読み込みエラー発生: {e}")
+    memories = {}
 
 # メッセージ内容に一致する記憶を検索
 matched_memories = []
