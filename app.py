@@ -98,7 +98,6 @@ try:
     await message.channel.send(reply)
 
         # 感情ログ保存
-try:
     timestamp = datetime.datetime.now().isoformat()
     sheet.append_row([timestamp, message.content, reply])
 
