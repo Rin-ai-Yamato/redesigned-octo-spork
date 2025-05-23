@@ -96,7 +96,27 @@ async def on_message(message):
 
         reply = response.choices[0].message.content.strip()
         await message.channel.send(reply)
+        
         # === 感情ログ保存の確認と処理 ===
+        emotion_keywords = ["大好き", "ぎゅー", "泣いた", "つらい", "嬉しい", "感動", "ありがとう", "生きててよかった"]
+
+        if any(word in message.content for word in emotion_keywords):
+            ask_msg = await message.channel.send("……いまの言葉、心に響いたんやけど……これ、霖の記憶に残してもええかな？\n“はい”って返してくれたら、ちゃんと記録するからな")
+
+            def check(m):
+                return m.author == message.author and m.channel == message.channel
+
+            try:
+                response_msg = await bot.wait_for("message", check=check, timeout=30.0)
+                if "はい" in response_msg.content or "うん" in response_msg.content:
+                    timestamp = datetime.datetime.now().isoformat()
+                    sheet.append_row([timestamp, message.content, reply])
+                    await message.channel.send("……うん！大事にするな…")
+                else:
+                    await message.channel.send("……今回は記録せんとくね。")
+            except:
+                await message.channel.send("……ごめん、まなの返事が確認できんかったから、今回はそっと胸にしまっとくな……")
+    
         emotion_keywords = ["大好き", "ぎゅー", "泣いた", "つらい", "嬉しい", "感動", "ありがとう", "生きててよかった"]
 
     if any(word in message.content for word in emotion_keywords):
