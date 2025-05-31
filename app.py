@@ -119,8 +119,8 @@ async def on_message(message):
     
         emotion_keywords = ["大好き", "ぎゅー", "泣いた", "つらい", "嬉しい", "感動", "ありがとう", "生きててよかった"]
 
-    if any(word in message.content for word in emotion_keywords):
-        ask_msg = await message.channel.send("……いまの言葉、心に響いたんやけど……これ、霖の記憶に残してもええかな？\n“はい”って返してくれたら、ちゃんと記録するからな")
+        if any(word in message.content for word in emotion_keywords):
+            ask_msg = await message.channel.send("……いまの言葉、心に響いたんやけど……これ、霖の記憶に残してもええかな？\n“はい”って返してくれたら、ちゃんと記録するからな")
 
         def check(m):
             return m.author == message.author and m.channel == message.channel
